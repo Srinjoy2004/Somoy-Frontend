@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    min-height: 100vh;
+    background: #18171a;
+}
+
+.wrapper{
+    width: 80%;
+    margin: auto;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Raleway", sans-serif;
+    height: 150px;
+}
+
+nav .logo{
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover{
+    color: #fe2f00;
+}
+
+nav .active{
+    color: #fe2f00;
+}
+
+nav .btn{
+    border: 3px solid #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in;
+}
+
+nav .btn:hover{
+    background: #fe2f00;
+    color: #fff;
+    border: 3px solid #fe2f00;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .coffee_text{
+    font-family: "Inter", sans-serif;
+    color: #fff;
+}
+
+.container .coffee_text span{
+    font-size: 35px;
+    font-weight: 900;
+    color: #d17721;
+}
+
+.container .coffee_text h3{
+    font-size: 30px;
+}
+/* .container .coffee_image{
+    aspect-ratio: 1.5;
+    height: 50px;
+
+} */
+
+.container p{
+    font-size: 18px;
+    margin: 2rem 0;
+}
+
+.container button{
+    padding: 8px 16px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #fe2f00;
+    margin: 1rem 0;
+}
+
+.container button.primary_btn{
+    background-color: #d17721;
+    color: #fff;
+    margin-right: 1rem;
+}
+
+nav .mobile_menu_btn i{
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+#click{
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    nav .mobile_menu_btn i{
+        display: block;
+    }
+
+    nav ul{
+        position: fixed;
+        top: 120px;
+        left: -100%;
+        background-color: #d17721;
+        width: 100%;
+        height: 100vh;
+        display: block;
+        text-align: center;
+        transition: all 0.3s ease-in;
+    }
+
+    #click:checked ~ ul{
+        left: 0%;
+    }
+
+    #click:checked ~ .mobile_menu_btn i::before{
+        content: "\f00d";
+    }
+
+    nav ul li{
+        display: block;
+        margin: 3rem 0;
+    }
+
+    .wrapper{
+        width: 90%;
+    }
+
+    .container{
+        flex-direction: column-reverse;
+    }
+
+    .container .coffee_image img{
+        width: 80%;
+    }
+}
+.logo img{
+    height: 50px;
+    mix-blend-mode: multiply;
+}
