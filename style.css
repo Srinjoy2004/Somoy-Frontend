@@ -5,11 +5,20 @@
     margin: 0;
     box-sizing: border-box;
 }
+:root{
+    --header-background:#18171a;
+    --default-font:"Raleway", sans-serif;
+    --basic-white: #fff;
+    --orange-dark:#fe2f00;
+    --orange-light:#d17721;
+
+
+}
 
 header{
     width: 100%;
     min-height: 100vh;
-    background: #18171a;
+    background: var(--header-background);
 }
 
 .wrapper{
@@ -21,14 +30,14 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Raleway", sans-serif;
+    font-family: var(--default-font);
     height: 150px;
 }
 
 nav .logo{
     display: flex;
     align-items: center;
-    color: #fff;
+    color: var(--basic-white);
 }
 
 nav ul{
@@ -39,7 +48,7 @@ nav ul{
 
 nav ul li a{
     text-decoration: none;
-    color: #fff;
+    color: var(--basic-white);
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -47,11 +56,11 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-    color: #fe2f00;
+    color: var(--orange-dark);
 }
 
 nav .active{
-    color: #fe2f00;
+    color: var(--orange-dark);
 }
 
 nav .btn{
@@ -62,9 +71,9 @@ nav .btn{
 }
 
 nav .btn:hover{
-    background: #fe2f00;
-    color: #fff;
-    border: 3px solid #fe2f00;
+    background:  var(--orange-dark);
+    color: var(--basic-white);
+    border: 3px solid  var(--orange-dark);
 }
 
 .container{
@@ -75,13 +84,13 @@ nav .btn:hover{
 
 .container .coffee_text{
     font-family: "Inter", sans-serif;
-    color: #fff;
+    color: var(--basic-white);
 }
 
 .container .coffee_text span{
     font-size: 35px;
     font-weight: 900;
-    color: #d17721;
+    color: var(--orange-light);
 }
 
 .container .coffee_text h3{
@@ -106,20 +115,24 @@ nav .btn:hover{
     cursor: pointer;
     font-size: 18px;
     font-weight: 600;
-    background-color: #fff;
-    color: #fe2f00;
+    background-color: var(--basic-white);
+    color: var(--orange-dark);
     margin: 1rem 0;
 }
 
 .container button.primary_btn{
-    background-color: #d17721;
-    color: #fff;
+    background-color: var(--orange-light);
+    color: var(--basic-white);
     margin-right: 1rem;
+}
+.container button.primary_btn:hover{
+    background-color: var(--orange-dark);
+    transition: ease 2s;
 }
 
 nav .mobile_menu_btn i{
     font-size: 2rem;
-    color: #fff;
+    color: var(--basic-white);
     cursor: pointer;
     display: none;
 }
@@ -137,7 +150,7 @@ nav .mobile_menu_btn i{
         position: fixed;
         top: 120px;
         left: -100%;
-        background-color: #d17721;
+        background-color: var(--orange-light);
         width: 100%;
         height: 100vh;
         display: block;
@@ -173,4 +186,115 @@ nav .mobile_menu_btn i{
 .logo img{
     height: 50px;
     mix-blend-mode: multiply;
+}
+ 
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--header-background);  
+    z-index: 9999;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    border: 6px solid var(--basic-white);
+    border-top: 6px solid var(--orange-dark);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Signup modal styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    color: var(--basic-white);
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+}
+ 
+.modal-content {
+    background-color: var(--header-background);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid var(--orange-dark);
+  
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Additional styles for inputs, buttons, etc. within the modal */
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    background-color: var(--orange-light);
+    color: var(--basic-white);
+    border: none;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    transition: ease 2s;
+    background-color: var(--orange-dark) ;
+}
+
+.separator {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.google-signup {
+    background-color: var(--orange-light);
+    color: var(--basic-white);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.google-signup:hover {
+    background-color: var(--orange-dark);
+}
+body .modal-open {
+    overflow: hidden;
 }
