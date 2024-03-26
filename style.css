@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 :root{
-    --header-background:#18171a;
+    --header-background:#0e0e10;
     --default-font:"Raleway", sans-serif;
     --basic-white: #fff;
     --orange-dark:#fe2f00;
@@ -185,7 +185,8 @@ nav .mobile_menu_btn i{
 }
 .logo img{
     height: 50px;
-    mix-blend-mode: multiply;
+    filter: invert(1);
+
 }
  
 .loading-container {
