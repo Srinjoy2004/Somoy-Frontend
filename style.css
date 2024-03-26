@@ -54,7 +54,25 @@ nav ul li a{
     letter-spacing: 1px;
     transition: all 0.3s ease;
 }
+ul li ul.dropdown li {
+    display: block;
+}
 
+ul li ul.dropdown {
+    width: 100%;
+    
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+ul li a:hover {
+    color: var(--orange-dark);
+}
+
+ul li:hover ul.dropdown {
+    display: block;
+}
 nav ul li a:hover{
     color: var(--orange-dark);
 }
