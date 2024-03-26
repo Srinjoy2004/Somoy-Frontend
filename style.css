@@ -206,6 +206,10 @@ nav .mobile_menu_btn i{
     filter: invert(1);
 
 }
+.dropdown li{
+  
+    padding-top: 10px;
+}
  
 .loading-container {
     position: fixed;

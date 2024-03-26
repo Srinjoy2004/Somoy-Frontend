@@ -3,56 +3,65 @@ window.addEventListener("load", function () {
     loader.style.display = "none";
 });
 
- // Get the modal element
-var modal = document.getElementById("signup-modal");
+var signupModal = document.getElementById("signup-modal");
+var signinModal = document.getElementById("signin-modal");
 
-// Get the button that opens the modal
 var signupBtn = document.querySelector(".primary_btn");
+var signinBtn = document.getElementById("signin-button");
 
-// Get the <span> element that closes the modal
-var closeBtn = document.querySelector(".close");
+var signupCloseSpan = document.querySelector("#signup-modal .close");
+var signinCloseSpan = document.querySelector("#signin-modal .close");
 
- 
+var signupButtonIndex = document.querySelector(".coffee_text .primary_btn");
+var signinButtonIndex = document.getElementById("signin-button");
+
 signupBtn.onclick = function() {
-    modal.style.display = "block";
-    document.body.classList.add("modal-open");  
+    signupModal.style.display = "block";
+    document.body.classList.add("modal-open");
 }
 
- 
-closeBtn.onclick = function() {
-    modal.style.display = "none";
-    document.body.classList.remove("modal-open"); // Unlock scrolling
+signupCloseSpan.onclick = function() {
+    signupModal.style.display = "none";
+    document.body.classList.remove("modal-open");
 }
- 
+
+signinBtn.onclick = function() {
+    signinModal.style.display = "block";
+}
+
+signinCloseSpan.onclick = function() {
+    signinModal.style.display = "none";
+}
+
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-        document.body.classList.remove("modal-open");  
+    if (event.target == signupModal) {
+        signupModal.style.display = "none";
+        document.body.classList.remove("modal-open");
+    } else if (event.target == signinModal) {
+        signinModal.style.display = "none";
     }
 }
 
-  
-    var signInModal = document.getElementById("signin-modal");
+var signup = document.getElementById('signup-button');
+var signin = document.getElementById('signed-in');
 
-    
-    var signInButton = document.getElementById("signin-button");
+signup.addEventListener('click', function() {
+    window.location.href = './Somoy-Frontend/new.html';
+    signupModal.style.display = 'none';
+    signupButtonIndex.style.display = 'none';
+    signinModal.style.display = 'none';
+    signinButtonIndex.style.display = 'none';
+});
 
-     
-    var signInCloseSpan = signInModal.querySelector(".close");
+signin.addEventListener('click', function() {
+    window.location.href = './Somoy-Frontend/new.html';
+    signinModal.style.display = 'none';
+    signinButtonIndex.style.display = 'none';
+    signupModal.style.display = 'none';
+    signupButtonIndex.style.display = 'none';
+});
 
-
-    signInButton.onclick = function() {
-        signInModal.style.display = "block";
-    }
  
-    signInCloseSpan.onclick = function() {
-        signInModal.style.display = "none";
-    }
 
-     
-    window.onclick = function(event) {
-        if (event.target == signInModal) {
-            signInModal.style.display = "none";
-        }
-    }
+
  
