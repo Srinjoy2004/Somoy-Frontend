@@ -12,9 +12,6 @@ var signinBtn = document.getElementById("signin-button");
 var signupCloseSpan = document.querySelector("#signup-modal .close");
 var signinCloseSpan = document.querySelector("#signin-modal .close");
 
-var signupButtonIndex = document.querySelector(".coffee_text .primary_btn");
-var signinButtonIndex = document.getElementById("signin-button");
-
 signupBtn.onclick = function() {
     signupModal.style.display = "block";
     document.body.classList.add("modal-open");
@@ -42,26 +39,61 @@ window.onclick = function(event) {
     }
 }
 
-var signup = document.getElementById('signup-button');
-var signin = document.getElementById('signed-in');
+window.addEventListener("load", function() {
+    var isSignUpHidden = localStorage.getItem("isSignUpHidden");
+    var isSignInHidden = localStorage.getItem("isSignInHidden");
 
-signup.addEventListener('click', function() {
-    window.location.href = './Somoy-Frontend/new.html';
-    signupModal.style.display = 'none';
-    signupButtonIndex.style.display = 'none';
-    signinModal.style.display = 'none';
-    signinButtonIndex.style.display = 'none';
+    if (isSignUpHidden === "true") {
+        document.querySelector(".primary_btn").style.display = "none";
+    }
+
+    if (isSignInHidden === "true") {
+        document.getElementById("signin-button").style.display = "none";
+    }
 });
 
-signin.addEventListener('click', function() {
-    window.location.href = './Somoy-Frontend/new.html';
-    signinModal.style.display = 'none';
-    signinButtonIndex.style.display = 'none';
-    signupModal.style.display = 'none';
-    signupButtonIndex.style.display = 'none';
+// Form submission validation for sign-up
+document.getElementById("signup-button").onclick = function(event) {
+    var usernameInput = document.querySelector("#signup-modal input[type='text']");
+    var emailInput = document.querySelector("#signup-modal input[type='email']");
+    var passwordInput = document.querySelector("#signup-modal input[type='password']");
+
+    if (usernameInput.value === "" || emailInput.value === "" || passwordInput.value === "") {
+        alert("Please fill in all fields.");
+        event.preventDefault();
+    } else {
+        signupModal.style.display = 'none';
+        localStorage.setItem("isSignUpHidden", "true");
+        localStorage.setItem("isSignInHidden", "true");
+    }
+}
+
+// Form submission validation for sign-in
+document.getElementById("signed-in").onclick = function(event) {
+    var usernameInput = document.querySelector("#signin-modal input[type='text']");
+    var passwordInput = document.querySelector("#signin-modal input[type='password']");
+
+    if (usernameInput.value === "" || passwordInput.value === "") {
+        alert("Please fill in all fields.");
+        event.preventDefault();
+    } else {
+        signinModal.style.display = 'none';
+        localStorage.setItem("isSignUpHidden", "true");
+        localStorage.setItem("isSignInHidden", "true");
+    }
+}
+
+// Functionality to logout
+function logout() {
+    localStorage.clear();
+    location.reload();
+}
+
+// Add event listener to the "Home" link to trigger logout
+document.querySelector("nav a[href='#']").addEventListener("click", function(event) {
+    logout();
 });
 
  
-
 
  

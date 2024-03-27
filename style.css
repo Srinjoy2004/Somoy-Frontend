@@ -195,6 +195,7 @@ nav .mobile_menu_btn i{
 
     .container{
         flex-direction: column-reverse;
+         
     }
 
     .container .coffee_image img{
@@ -209,7 +210,10 @@ nav .mobile_menu_btn i{
 .dropdown li{
   
     padding-top: 20px;
+    /* border: 2px solid var(--orange-dark);
+     */
 }
+
  
 .loading-container {
     position: fixed;
