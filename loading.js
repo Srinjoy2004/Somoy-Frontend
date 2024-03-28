@@ -93,6 +93,22 @@ function logout() {
 document.querySelector("nav a[href='#']").addEventListener("click", function(event) {
     logout();
 });
+function showOverlay() {
+    var overlay = document.getElementById("overlay");
+    overlay.style.display = "block";
+  }
+  
+  window.addEventListener("load", function() {
+    var occupationSelect = document.getElementById("occupationSelect");
+    var occupations = ["Self Employed", "Student", "Business", "Corporate", "Others"];
+  
+    occupations.forEach(function(occupation) {
+      var option = document.createElement("option");
+      option.text = occupation;
+      option.value = occupation;
+      occupationSelect.add(option);
+    });
+  });
 
  
 

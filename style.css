@@ -419,3 +419,222 @@ body .modal-open {
     background-color: var(--orange-dark);
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+  }
+  
+  .overlay-content {
+    position: absolute;
+    font-family: var(--default-font);
+    top: 50%;
+    left: 50%;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
+    background-color: var(--orange-light);
+    border: 2px solid var(--header-background);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+  max-width: 80%; /* Limit maximum width */
+  height: auto; 
+  }
+  
+  .overlay-content p {
+    margin-bottom: 10px;
+  }
+  
+  #okButton {
+    background-color: var(--basic-white); 
+
+    color: var(--header-background);
+    border: 1px solid var(--orange-dark);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  #okButton:hover {
+    background-color: var(--orange-dark); 
+  }
+
+  .overlay2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+  }
+  
+  .overlay-content2 {
+    position: absolute;
+    font-family: var(--default-font);
+    top: 50%;
+    left: 50%;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
+    background-color: var(--orange-light);
+    border: 2px solid var(--header-background);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+  max-width: 80%; /* Limit maximum width */
+  height: auto; 
+  }
+  
+  .overlay-content2 p {
+    margin-bottom: 10px;
+  }
+  #nextButton {
+    background-color: var(--basic-white); 
+    color: var(--header-background);
+    border: 1px solid var(--orange-dark);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #nextButton:hover {
+    background-color: var(--orange-dark); 
+  }
+  .overlay3 {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+  }
+  
+  .overlay-content3 {
+    position: absolute;
+    font-family: var(--default-font);
+    top: 50%;
+    left: 50%;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
+    background-color: var(--orange-light);
+    border: 2px solid var(--header-background);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+  max-width: 80%; /* Limit maximum width */
+  height: auto; 
+  }
+  
+  .overlay-content3 p {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  #submitButton {
+    background-color: var(--basic-white); 
+    color: var(--header-background);
+    border: 1px solid var(--orange-dark);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #submitButton:hover {
+    background-color: var(--orange-dark); 
+  }
+  .overlay-content3 form {
+    text-align: left;
+  }
+  
+  .overlay-content3 input[type="text"],
+  .overlay-content3 input[type="number"],
+  .overlay-content3 input[type="tel"],
+  .overlay-content3 input[type="email"],
+  .overlay-content3 select,
+  .overlay-content3 input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .overlay-content3 input[type="submit"] {
+    background-color: #007bff; /* Your color code */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .overlay-content3 input[type="submit"]:hover {
+    background-color: #0056b3; /* Your color code */
+  }
+
+  .overlay4{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+  }
+  
+  .overlay-content4 {
+    position: absolute;
+    font-family: var(--default-font);
+    top: 50%;
+    left: 50%;
+    font-weight: 500;
+    transform: translate(-50%, -50%);
+    background-color: var(--orange-light);
+    border: 2px solid var(--header-background);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* Adjust width as needed */
+  max-width: 80%; /* Limit maximum width */
+  height: auto; 
+  }
+  
+  .overlay-content4 p {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+  }
+  #ok-Button {
+    background-color: var(--basic-white); 
+    color: var(--header-background);
+    border: 1px solid var(--orange-dark);
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #ok-Button:hover {
+    background-color: var(--orange-dark); 
+  }
+  
