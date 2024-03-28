@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Management</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Form layout styles */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .input-column {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .input-column input,
+        .input-column select {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .output-column {
+            flex: 1;
+            padding-left: 20px;
+        }
+        .output-column canvas {
+            max-width: 300px; /* Limit canvas width */
+            max-height: 300px; /* Limit canvas height */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-column">
+            <h2>Activities</h2>
+            <form id="activityForm">
+                <!-- Dynamic input fields for custom activities, durations, and type -->
+                <div id="activities">
+                    <div class="activity">
+                        <label for="activity1">Activity 1:</label>
+                        <input type="text" id="activity1" name="activity1">
+                        <label for="time1">Time (hours):</label>
+                        <input type="number" id="time1" name="time1" min="0" max="24">
+                        <label for="type1">Type:</label>
+                        <select id="type1" name="type1">
+                            <option value="productive">Productive</option>
+                            <option value="non-productive">Non-Productive</option>
+                            <option value="necessary">Necessary</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" onclick="addActivity()">Add Activity</button>
+                <button type="button" onclick="calculateTotalTime()">Submit</button>
+            </form>
+        </div>
+        <div class="output-column">
+            <h2>Time Summary</h2>
+            <!-- Time summary will be displayed here -->
+            <div id="timeSummary"></div>
+            <canvas id="productiveChart"></canvas> <!-- Canvas for productive activities pie chart -->
+            <canvas id="nonProductiveChart"></canvas> <!-- Canvas for non-productive activities pie chart -->
+            <canvas id="necessaryChart"></canvas> <!-- Canvas for necessary activities pie chart -->
+        </div>
+    </div>
+
+    <script>
+        // Counter for dynamically adding activity fields
+        var activityCount = 1;
+
+        function addActivity() {
+            activityCount++;
+            var activitiesDiv = document.getElementById('activities');
+            var newActivityDiv = document.createElement('div');
+            newActivityDiv.classList.add('activity');
+            newActivityDiv.innerHTML = '<label for="activity' + activityCount + '">Activity ' + activityCount + ':</label>' +
+                                       '<input type="text" id="activity' + activityCount + '" name="activity' + activityCount + '">' +
+                                       '<label for="time' + activityCount + '">Time (hours):</label>' +
+                                       '<input type="number" id="time' + activityCount + '" name="time' + activityCount + '" min="0" max="24">' +
+                                       '<label for="type' + activityCount + '">Type:</label>' +
+                                       '<select id="type' + activityCount + '" name="type' + activityCount + '">' +
+                                       '<option value="productive">Productive</option>' +
+                                       '<option value="non-productive">Non-Productive</option>' +
+                                       '<option value="necessary">Necessary</option>' +
+                                       '</select>';
+            activitiesDiv.appendChild(newActivityDiv);
+        }
+
+        function calculateTotalTime() {
+            var activities = [];
+            var productiveActivities = [];
+            var nonProductiveActivities = [];
+            var necessaryActivities = [];
+            var totalHours = 0;
+
+            // Collect input values for each activity
+            for (var i = 1; i <= activityCount; i++) {
+                var activityName = document.getElementById('activity' + i).value;
+                var activityTime = parseInt(document.getElementById('time' + i).value);
+                var activityType = document.getElementById('type' + i).value;
+                if (activityName.trim() !== '' && !isNaN(activityTime) && activityTime >= 0 && activityTime <= 24) {
+                    activities.push({ name: activityName, time: activityTime, type: activityType });
+                    totalHours += activityTime;
+                    if (activityType === 'productive') {
+                        productiveActivities.push({ name: activityName, time: activityTime });
+                    } else if (activityType === 'non-productive') {
+                        nonProductiveActivities.push({ name: activityName, time: activityTime });
+                    } else if (activityType === 'necessary') {
+                        necessaryActivities.push({ name: activityName, time: activityTime });
+                    }
+                } else {
+                    alert('Invalid input for Activity ' + i + '. Please make sure activity name is not empty and time is a valid number between 0 and 24.');
+                    return;
+                }
+            }
+
+            // Display time summary
+            var timeSummaryDiv = document.getElementById('timeSummary');
+            timeSummaryDiv.innerHTML = '';
+            activities.forEach(function(activity) {
+                var p = document.createElement('p');
+                p.textContent = activity.name + ': ' + activity.time + ' hours (' + activity.type + ')';
+                timeSummaryDiv.appendChild(p);
+            });
+            var totalHoursP = document.createElement('p');
+            totalHoursP.textContent = 'Total: ' + totalHours + ' hours';
+            timeSummaryDiv.appendChild(totalHoursP);
+
+            // Check if total time exceeds 24 hours
+            if (totalHours > 24) {
+                alert('Total time exceeds 24 hours! Please adjust your activities.');
+            } else if (totalHours < 24) {
+                alert('Total time is less than 24 hours! Please adjust your activities.');
+            } else {
+                // If total time is within 24 hours, generate pie charts
+                generatePieChart(productiveActivities.map(function(activity) {
+                    return activity.name;
+                }), productiveActivities.map(function(activity) {
+                    return activity.time;
+                }), 'productiveChart');
+
+                generatePieChart(nonProductiveActivities.map(function(activity) {
+                    return activity.name;
+                }), nonProductiveActivities.map(function(activity) {
+                    return activity.time;
+                }), 'nonProductiveChart');
+
+                generatePieChart(necessaryActivities.map(function(activity) {
+                    return activity.name;
+                }), necessaryActivities.map(function(activity) {
+                    return activity.time;
+                }), 'necessaryChart');
+            }
+        }
+
+        function generatePieChart(labels, data, chartId) {
+            var ctx = document.getElementById(chartId).getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    // Add any options here if needed
+                }
+            });
+        }
+    </script>
+</body>
+</html>
