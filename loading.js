@@ -232,6 +232,8 @@ document.getElementById("submitButton").addEventListener("click", function(event
     }
     event.preventDefault(); // Prevent form submission
 });
+// 
+// Our Team-member's Section
  
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");
