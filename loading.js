@@ -1,8 +1,8 @@
-/*window.addEventListener("load", function () {
+window.addEventListener("load", function () {
   const loader = document.querySelector(".loading-container");
   loader.style.display = "none";
 });
-*/
+
 // Function to show Overlay 1
 
 function showOverlay1() {
@@ -205,7 +205,7 @@ window.onclick = function (event) {
   }
 };
 
-/*
+
 window.addEventListener("load", function () {
   var isSignUpHidden = localStorage.getItem("isSignUpHidden");
   var isSignInHidden = localStorage.getItem("isSignInHidden");
@@ -218,7 +218,7 @@ window.addEventListener("load", function () {
     document.getElementById("signin-button").style.display = "none";
   }
 });
-*/
+
 
 function toggleLetsStartButton() {
   var isSignUpHidden = localStorage.getItem("isSignUpHidden");
@@ -235,7 +235,7 @@ function toggleLetsStartButton() {
 
 // Form submission validation for sign-in
 
-/*
+
 window.addEventListener("load", function () {
   var occupationSelect = document.getElementById("occupationSelect");
   var occupations = [
@@ -253,7 +253,7 @@ window.addEventListener("load", function () {
     occupationSelect.add(option);
   });
 });
-*/
+
 
 // Event listener for "OK" button in Overlay 4
 document.getElementById("ok-Button").addEventListener("click", function () {
